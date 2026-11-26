@@ -1,0 +1,283 @@
+{
+  "version": "8",
+  "dialect": "postgres",
+  "id": "804bb42f-9423-4558-aa39-67687509ad70",
+  "prevIds": [
+    "00000000-0000-0000-0000-000000000000"
+  ],
+  "ddl": [
+    {
+      "isRlsEnabled": false,
+      "name": "absensi",
+      "entityType": "tables",
+      "schema": "public"
+    },
+    {
+      "isRlsEnabled": false,
+      "name": "mahasiswa",
+      "entityType": "tables",
+      "schema": "public"
+    },
+    {
+      "isRlsEnabled": false,
+      "name": "sesi",
+      "entityType": "tables",
+      "schema": "public"
+    },
+    {
+      "type": "serial",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "id",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "absensi"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "npm",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "absensi"
+    },
+    {
+      "type": "integer",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "sesi_id",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "absensi"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "status",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "absensi"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "waktu_absen",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "absensi"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "npm",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "mahasiswa"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "nama",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "mahasiswa"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "email",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "mahasiswa"
+    },
+    {
+      "type": "serial",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "id",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "sesi"
+    },
+    {
+      "type": "integer",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "pertemuan",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "sesi"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "waktu_mulai",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "sesi"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "waktu_selesai",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "sesi"
+    },
+    {
+      "nameExplicit": false,
+      "columns": [
+        "npm"
+      ],
+      "schemaTo": "public",
+      "tableTo": "mahasiswa",
+      "columnsTo": [
+        "npm"
+      ],
+      "onUpdate": "NO ACTION",
+      "onDelete": "NO ACTION",
+      "name": "absensi_npm_mahasiswa_npm_fkey",
+      "entityType": "fks",
+      "schema": "public",
+      "table": "absensi"
+    },
+    {
+      "nameExplicit": false,
+      "columns": [
+        "sesi_id"
+      ],
+      "schemaTo": "public",
+      "tableTo": "sesi",
+      "columnsTo": [
+        "id"
+      ],
+      "onUpdate": "NO ACTION",
+      "onDelete": "NO ACTION",
+      "name": "absensi_sesi_id_sesi_id_fkey",
+      "entityType": "fks",
+      "schema": "public",
+      "table": "absensi"
+    },
+    {
+      "columns": [
+        "id"
+      ],
+      "nameExplicit": false,
+      "name": "absensi_pkey",
+      "schema": "public",
+      "table": "absensi",
+      "entityType": "pks"
+    },
+    {
+      "columns": [
+        "npm"
+      ],
+      "nameExplicit": false,
+      "name": "mahasiswa_pkey",
+      "schema": "public",
+      "table": "mahasiswa",
+      "entityType": "pks"
+    },
+    {
+      "columns": [
+        "id"
+      ],
+      "nameExplicit": false,
+      "name": "sesi_pkey",
+      "schema": "public",
+      "table": "sesi",
+      "entityType": "pks"
+    },
+    {
+      "nameExplicit": false,
+      "columns": [
+        "npm",
+        "sesi_id"
+      ],
+      "nullsNotDistinct": false,
+      "name": "absensi_npm_sesi_id_unique",
+      "entityType": "uniques",
+      "schema": "public",
+      "table": "absensi"
+    },
+    {
+      "nameExplicit": false,
+      "columns": [
+        "email"
+      ],
+      "nullsNotDistinct": false,
+      "name": "mahasiswa_email_key",
+      "schema": "public",
+      "table": "mahasiswa",
+      "entityType": "uniques"
+    },
+    {
+      "nameExplicit": false,
+      "columns": [
+        "pertemuan"
+      ],
+      "nullsNotDistinct": false,
+      "name": "sesi_pertemuan_key",
+      "schema": "public",
+      "table": "sesi",
+      "entityType": "uniques"
+    }
+  ],
+  "renames": []
+}
