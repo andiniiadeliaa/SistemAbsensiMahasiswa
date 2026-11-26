@@ -1,0 +1,14 @@
+# The original app is Python/Flask (server.py), which Netlify cannot run.
+# On Netlify the same app runs as a TypeScript Netlify Function
+# (netlify/functions/app.mts) backed by Netlify Database (Postgres).
+[build]
+  command = "npm run build"     # copies static/ into dist/static/
+  publish = "dist"              # only static assets are published (not absensi.db or server.py)
+
+[build.environment]
+  NODE_VERSION = "24"
+
+[functions]
+  directory = "netlify/functions"
+  # The Jinja templates are shared with the Flask app and rendered by the function.
+  included_files = ["templates/**"]
