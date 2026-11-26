@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sistem Absensi Mahasiswa</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <main class="container narrow">
+    <h1>Sistem Absensi Mahasiswa</h1>
+    <p class="muted">Pilih menu untuk melanjutkan.</p>
+    <div class="menu">
+      <a class="menu-card" href="{{ url_for('mahasiswa') }}">
+        <h2>Mahasiswa</h2><p>Isi absensi perkuliahan.</p>
+      </a>
+      <a class="menu-card" href="{{ url_for('dosen') }}">
+        <h2>Dosen</h2><p>Buka sesi dan lihat data absensi.</p>
+      </a>
+      <a class="menu-card" href="{{ url_for('rekap') }}">
+        <h2>Rekap Absensi</h2><p>Lihat ringkasan kehadiran.</p>
+      </a>
+    </div>
+  </main>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="id">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Akses Dosen</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+    <main class="container narrow">
+        <h1>Akses Dosen</h1>
+        <p class="muted">Masukkan kode akses dosen untuk membuka dashboard dan rekap absensi.</p>
+        {% with messages = get_flashed_messages() %} {% for message in messages %}
+        <div class="notice">{{ message }}</div>{% endfor %} {% endwith %}
+        <form method="POST">
+            <label for="kode_akses">Kode Akses</label>
+            <div class="kode-box">
+                <input id="kode_akses" type="password" name="kode_akses" required>
+                <button type="button" class="toggle-btn" onclick="toggleKode(this)">Tampilkan</button>
+            </div>
+            <button type="submit">Masuk</button>
+        </form>
+    </main>
+    <script>
+        function toggleKode(btn) {
+            const input = document.getElementById("kode_akses");
+            if (input.type === "password") {
+                input.type = "text";
+                btn.textContent = "Sembunyikan";
+            } else {
+                input.type = "password";
+                btn.textContent = "Tampilkan";
+            }
+        }
+    </script>
+</body>
+
+</html>

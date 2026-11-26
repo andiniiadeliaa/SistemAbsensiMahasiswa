@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="id">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Halaman Dosen</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+    <main class="container">
+        <div class="top-bar">
+            <a class="button-link" href="{{ url_for('rekap') }}">Lihat Rekap Absensi</a>
+            <a class="secondary-link" href="{{ url_for('keluar_dosen') }}">Keluar</a>
+        </div>
+        <h1>Halaman Dosen</h1>
+        {% with messages = get_flashed_messages() %} {% for message in messages %}
+        <div class="notice">{{ message }}</div>{% endfor %} {% endwith %}
+        <section class="panel">
+            <h2>Buka Sesi Absensi</h2>
+            <p class="muted">Sesi akan terbuka selama 5 menit.</p>
+            <form method="POST" class="inline-form">
+                <label for="pertemuan">Pertemuan (1-14)</label>
+                <input id="pertemuan" type="number" name="pertemuan" min="1" max="14" required>
+                <button type="submit">Buka Sesi</button>
+            </form>
+        </section>
+
+        <h2>Daftar Sesi</h2>
+        <div class="table-wrap">
+            <table>
+                <tr>
+                    <th>Pertemuan</th>
+                    <th>Mulai</th>
+                    <th>Selesai</th>
+                    <th>Jumlah Absensi</th>
+                </tr>
+                {% for item in sesi %}
+                <tr>
+                    <td>{{ item.pertemuan }}</td>
+                    <td>{{ item.waktu_mulai[11:16] }}</td>
+                    <td>{{ item.waktu_selesai[11:16] }}</td>
+                    <td>{{ item.jumlah_absen }}</td>
+                </tr>
+                {% else %}
+                <tr>
+                    <td colspan="4">Belum ada sesi.</td>
+                </tr>{% endfor %}
+            </table>
+        </div>
+
+        <h2>Data Absensi Mahasiswa</h2>
+        <div class="table-wrap">
+            <table>
+                <tr>
+                    <th>NPM</th>
+                    <th>Nama</th>
+                    <th>Email</th>
+                    <th>Pertemuan</th>
+                    <th>Status</th>
+                    <th>Waktu</th>
+                </tr>
+                {% for item in data %}
+                <tr>
+                    <td>{{ item.npm }}</td>
+                    <td>{{ item.nama }}</td>
+                    <td>{{ item.email }}</td>
+                    <td>{{ item.pertemuan }}</td>
+                    <td>{{ item.status }}</td>
+                    <td>{{ item.waktu_absen[11:16] }}</td>
+                </tr>
+                {% else %}
+                <tr>
+                    <td colspan="6">Belum ada data absensi.</td>
+                </tr>{% endfor %}
+            </table>
+        </div>
+    </main>
+</body>
+
+</html>

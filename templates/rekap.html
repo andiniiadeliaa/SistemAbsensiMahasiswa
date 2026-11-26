@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="id">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Rekap Absensi</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+    <main class="container">
+        <div class="top-bar">
+            <a href="{{ url_for('dosen') }}">← Kembali ke Dashboard Dosen</a>
+            <a class="secondary-link" href="{{ url_for('keluar_dosen') }}">Keluar</a>
+        </div>
+        <h1>Rekap Absensi</h1>
+        <div class="table-wrap">
+            <table>
+                <tr>
+                    <th>NPM</th>
+                    <th>Nama</th>
+                    <th>Email</th>
+                    <th>Hadir</th>
+                    <th>Izin</th>
+                    <th>Sakit</th>
+                </tr>
+                {% for item in data %}
+                <tr>
+                    <td>{{ item.npm }}</td>
+                    <td>{{ item.nama }}</td>
+                    <td>{{ item.email }}</td>
+                    <td>{{ item.hadir or 0 }}</td>
+                    <td>{{ item.izin or 0 }}</td>
+                    <td>{{ item.sakit or 0 }}</td>
+                </tr>
+                {% else %}
+                <tr>
+                    <td colspan="6">Belum ada data mahasiswa.</td>
+                </tr>{% endfor %}
+            </table>
+        </div>
+    </main>
+</body>
+
+</html>

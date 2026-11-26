@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="id">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Absensi Mahasiswa</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+    <main class="container narrow">
+        <h1>Form Absensi Mahasiswa</h1>
+        <p class="muted">Silakan isi data kehadiran pada sesi yang sedang dibuka.</p>
+        {% with messages = get_flashed_messages() %} {% for message in messages %}
+        <div class="notice">{{ message }}</div>{% endfor %} {% endwith %} {% if sesi %}
+        <form method="POST">
+            <label for="npm">NPM</label>
+            <input id="npm" name="npm" required>
+
+            <label for="nama">Nama lengkap</label>
+            <input id="nama" name="nama" required>
+
+            <label for="email">Email</label>
+            <input id="email" type="email" name="email" required>
+
+            <label for="sesi_id">Pilih pertemuan</label>
+            <select id="sesi_id" name="sesi_id" required>
+      <option value="">-- Pilih sesi aktif --</option>
+      {% for item in sesi %}
+      <option value="{{ item.id }}">Pertemuan {{ item.pertemuan }} (berakhir {{ item.waktu_selesai[11:16] }})</option>
+      {% endfor %}
+    </select>
+
+            <label for="status">Status kehadiran</label>
+            <select id="status" name="status" required>
+      <option value="">-- Pilih status --</option>
+      <option value="Hadir">Hadir</option>
+      <option value="Izin">Izin</option>
+      <option value="Sakit">Sakit</option>
+    </select>
+
+            <button type="submit">Kirim Absensi</button>
+        </form>
+        {% else %}
+        <div class="notice">Belum ada sesi absensi yang sedang dibuka oleh dosen.</div>
+        {% endif %}
+    </main>
+</body>
+
+</html>
